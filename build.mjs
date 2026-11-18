@@ -162,6 +162,7 @@ function render(fitxer) {
     '{{form:consentiment}}': consentiment,
     '{{form:estat}}': estat,
     '{{foto:facana-detall}}': foto('facana-detall', "La façana de La Moral, amb l'esgrafiat «Cooperativa Obrera de Consumo La Moral» entre els arcs", { sizes: '(min-width: 960px) 52vw, 100vw', lazy: false, prioritat: true }),
+    '{{foto:heroi-fons}}': foto('facana-bandera', '', { sizes: '100vw', classe: 'heroi__fons', lazy: false, prioritat: true }),
     '{{foto:facana-bandera}}': foto('facana-bandera', 'La façana de Güell i Ferrer, 86, amb la bandera de la cooperació i la pancarta dels 120 anys', { sizes: '(min-width: 960px) 50vw, 100vw' }),
     '{{foto:botiga-1934}}': foto('botiga-1934', "L'interior de la botiga de la cooperativa el 1934, amb prestatges plens i sacs de gra al llarg del taulell", { sizes: '100vw' }),
     '{{foto:botiga-sepia}}': foto('botiga-sepia', 'La botiga de la cooperativa vista des del fons, amb els taulells i les finestres', { sizes: '(min-width: 960px) 40vw, 92vw' }),
