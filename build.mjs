@@ -39,6 +39,7 @@ const MIDES = {
   'facana-detall': [1400, 1050, 800], 'facana-bandera': [1260, 946, 800], 'botiga-1934': [1400, 869, 800],
   'facana-sol': [700, 513], 'botiga-sepia': [700, 513], 'teatre-antic': [700, 513], 'taula-120': [700, 525],
   'junta-2024': [700, 482], 'moneda-social': [700, 978],
+  'facana-panoramica': [1909, 502], 'cartell': [1100, 367, 560],
 };
 function foto(nom, alt, { sizes = '100vw', classe = '', lazy = true, prioritat = false } = {}) {
   const [w, h, petita] = MIDES[nom] || [800, 600];
@@ -162,7 +163,8 @@ function render(fitxer) {
     '{{form:consentiment}}': consentiment,
     '{{form:estat}}': estat,
     '{{foto:facana-detall}}': foto('facana-detall', "La façana de La Moral, amb l'esgrafiat «Cooperativa Obrera de Consumo La Moral» entre els arcs", { sizes: '(min-width: 960px) 52vw, 100vw', lazy: false, prioritat: true }),
-    '{{foto:heroi-fons}}': foto('facana-bandera', '', { sizes: '100vw', classe: 'heroi__fons', lazy: false, prioritat: true }),
+    '{{foto:heroi-fons}}': foto('facana-panoramica', '', { sizes: '100vw', classe: 'heroi__fons', lazy: false, prioritat: true }),
+    '{{foto:cartell}}': foto('cartell', 'Societat Cooperativa de Consum La Moral', { sizes: '(min-width: 760px) 560px, 86vw', classe: 'heroi__cartell', lazy: false }),
     '{{foto:facana-bandera}}': foto('facana-bandera', 'La façana de Güell i Ferrer, 86, amb la bandera de la cooperació i la pancarta dels 120 anys', { sizes: '(min-width: 960px) 50vw, 100vw' }),
     '{{foto:botiga-1934}}': foto('botiga-1934', "L'interior de la botiga de la cooperativa el 1934, amb prestatges plens i sacs de gra al llarg del taulell", { sizes: '100vw' }),
     '{{foto:botiga-sepia}}': foto('botiga-sepia', 'La botiga de la cooperativa vista des del fons, amb els taulells i les finestres', { sizes: '(min-width: 960px) 40vw, 92vw' }),
