@@ -1,0 +1,110 @@
+{
+  "_ajuda": "Agenda de La Moral. Data en format AAAA-MM-DD. Les activitats passades van soles a «Anteriors». Amb \"inscripcio\": true surt el botó per apuntar-s'hi. \"exemple\": true marca una activitat inventada que cal substituir (surt amb ⚑).",
+  "categories": [
+    "Ball",
+    "Teatre",
+    "Música",
+    "Escacs",
+    "Xerrades",
+    "Festa",
+    "Assemblea"
+  ],
+  "habituals": [
+    {
+      "id": "balls",
+      "titol": "Balls de cap de setmana",
+      "quan": "Dissabtes i diumenges a la tarda",
+      "text": "La tradició de ball de la casa, a la sala d'actes. Oberts a socis i a tothom.",
+      "verificar": "Dies, horari i preu"
+    },
+    {
+      "id": "festes",
+      "titol": "Festes temàtiques",
+      "quan": "Cada dos mesos",
+      "text": "Festes amb una temàtica diferent cada vegada, que omplen la sala de gent del barri.",
+      "verificar": "Calendari de l'any"
+    },
+    {
+      "id": "escacs",
+      "titol": "Escacs",
+      "quan": "Certàmens al llarg de l'any",
+      "text": "La secció d'escacs ja existia durant la República. Avui La Moral continua organitzant certàmens.",
+      "verificar": "Dia de partides i com apuntar-s'hi"
+    },
+    {
+      "id": "llibres",
+      "titol": "Presentacions i xerrades",
+      "quan": "Diverses vegades al mes",
+      "text": "Presentacions de llibres, conferències i taules rodones. La Moral ha acollit, per exemple, el certamen de novel·la Badalona Negra.",
+      "verificar": "Si es manté la freqüència"
+    }
+  ],
+  "activitats": [
+    {
+      "id": "teatre-desembre",
+      "titol": "Obra de teatre a la sala d'actes",
+      "data": "2026-12-05",
+      "hora": "19.00",
+      "cat": "Teatre",
+      "lloc": "Sala d'actes",
+      "preuSoci": "5 €",
+      "preu": "8 €",
+      "inscripcio": true,
+      "text": "Funció d'una companyia amateur a l'escenari històric de la casa.",
+      "exemple": true
+    },
+    {
+      "id": "ball-nadal",
+      "titol": "Ball de Nadal",
+      "data": "2026-12-20",
+      "hora": "18.00",
+      "cat": "Ball",
+      "lloc": "Sala d'actes",
+      "preuSoci": "Gratuït",
+      "preu": "5 €",
+      "inscripcio": false,
+      "text": "Ball de tarda per acomiadar l'any.",
+      "exemple": true
+    },
+    {
+      "id": "xerrada-cooperativisme",
+      "titol": "Xerrada: 122 anys de cooperativisme a Badalona",
+      "data": "2027-01-15",
+      "hora": "19.00",
+      "cat": "Xerrades",
+      "lloc": "Sala polivalent",
+      "preuSoci": "Gratuït",
+      "preu": "Gratuït",
+      "inscripcio": true,
+      "text": "Repàs de la història de La Moral i de les cooperatives obreres de la ciutat.",
+      "exemple": true
+    },
+    {
+      "id": "assemblea-2027",
+      "titol": "Assemblea general de socis",
+      "data": "2027-02-27",
+      "hora": "17.00",
+      "cat": "Assemblea",
+      "lloc": "Sala d'actes",
+      "preuSoci": "Socis",
+      "preu": "—",
+      "inscripcio": false,
+      "nomesSocis": true,
+      "text": "Rendició de comptes i pla d'activitats de l'any.",
+      "exemple": true
+    },
+    {
+      "id": "taula-esport-2024",
+      "titol": "Taula rodona «La Moral amb l'esport a Badalona»",
+      "data": "2024-04-24",
+      "hora": "19.00",
+      "cat": "Xerrades",
+      "lloc": "Sala d'actes",
+      "preuSoci": "Gratuït",
+      "preu": "Gratuït",
+      "inscripcio": false,
+      "text": "Acte dels 120 anys amb esportistes i periodistes de la ciutat.",
+      "foto": "taula-120"
+    }
+  ]
+}

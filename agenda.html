@@ -1,0 +1,76 @@
+<!--meta {"title": "Agenda", "desc": "Agenda de la Cooperativa La Moral de Badalona: properes activitats, activitats de cada setmana i inscripcions en línia.", "nav": "agenda"} -->
+<!doctype html>
+<html lang="ca">
+<head>
+{{head}}
+</head>
+<body>
+{{header}}
+<main id="contingut">
+
+  <header class="pagina">
+    <p class="etiqueta">Agenda</p>
+    <h1>Què passa a La Moral</h1>
+    <p class="entradeta">Les activitats són obertes a tothom. Les persones sòcies tenen preu reduït i prioritat quan hi ha places limitades. <span class="vf">Confirmar</span></p>
+    <nav class="dins-pagina" aria-label="En aquesta pàgina">
+      <a href="#properes">Properes</a>
+      <a href="#sempre">Cada setmana</a>
+      <a href="#inscripcio">Inscripcions</a>
+      <a href="#anteriors">Anteriors</a>
+    </nav>
+  </header>
+
+  <section class="bloc" id="properes" aria-labelledby="t-properes">
+    <div class="bloc__cap"><h2 id="t-properes">Properes</h2></div>
+    {{agenda:filtre}}
+    <ul class="agenda" data-agenda>
+{{agenda:properes}}
+    </ul>
+  </section>
+
+  <section class="bloc fons-rosa" id="sempre" aria-labelledby="t-sempre">
+    <div class="bloc__cap"><h2 id="t-sempre">Les de sempre</h2><p>El que fa bategar la casa tot l'any.</p></div>
+    <ul class="habituals">
+{{agenda:habituals}}
+    </ul>
+  </section>
+
+  <section class="bloc doble doble--form" id="inscripcio" aria-labelledby="t-inscr">
+    <div>
+      <h2 id="t-inscr">Inscriu-t'hi</h2>
+      <p>Algunes activitats tenen places limitades. Apunta-t'hi aquí i et confirmarem la plaça per correu.</p>
+      <p class="nota">Si l'activitat té preu, es paga el mateix dia a l'entrada. <span class="vf">Confirmar forma de pagament</span></p>
+    </div>
+    <form class="formulari" action="/api/formulari" method="post" data-formulari>
+      <input type="hidden" name="tipus" value="inscripcio">
+      {{form:camps}}
+      <div class="camp"><label for="i-act">Activitat *</label><select id="i-act" name="activitat" required="required"><option value="">Tria una activitat</option>{{agenda:opcions}}</select></div>
+      <div class="fila">
+        <div class="camp"><label for="i-nom">Nom i cognoms *</label><input id="i-nom" name="nom" required="required" autocomplete="name" maxlength="100"></div>
+        <div class="camp"><label for="i-places">Places *</label><input id="i-places" name="places" type="number" min="1" max="10" value="1" required="required"></div>
+      </div>
+      <div class="fila">
+        <div class="camp"><label for="i-correu">Correu *</label><input id="i-correu" name="correu" type="email" required="required" autocomplete="email" maxlength="200"></div>
+        <div class="camp"><label for="i-tel">Telèfon</label><input id="i-tel" name="telefon" type="tel" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <fieldset class="camp"><legend>Ets soci/sòcia de La Moral?</legend><div class="opcions"><label><input type="radio" name="soci" value="si"> Sí</label><label><input type="radio" name="soci" value="no" checked="checked"> No</label></div></fieldset>
+      {{form:consentiment}}
+      <button class="boto" type="submit">Envia la inscripció</button>
+      {{form:estat}}
+    </form>
+  </section>
+
+  <section class="bloc" id="anteriors" aria-labelledby="t-anteriors">
+    <div class="bloc__cap"><h2 id="t-anteriors">Anteriors</h2></div>
+    <ul class="agenda agenda--passada">
+{{agenda:anteriors}}
+    </ul>
+  </section>
+
+</main>
+{{footer}}
+{{js:menu}}
+{{js:agenda}}
+{{js:formulari}}
+</body>
+</html>

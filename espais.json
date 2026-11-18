@@ -1,0 +1,53 @@
+{
+  "_ajuda": "Espais de La Moral. \"foto\" és el nom de la imatge a src/assets/img (sense extensió, cal .webp i .jpg). Si no hi ha foto, surt un espai reservat amb ⚑.",
+  "espais": [
+    {
+      "id": "sala-actes",
+      "nom": "Sala d'actes",
+      "subtitol": "El teatre de la casa",
+      "m2": 168,
+      "aforament": "140 butaques",
+      "planta": "Planta pis",
+      "foto": "taula-120",
+      "alt": "L'escenari de la sala d'actes durant la taula rodona dels 120 anys, amb el teló vermell i la bandera de la cooperació",
+      "fotoAntiga": "teatre-antic",
+      "altAntiga": "La sala d'actes de La Moral en una fotografia antiga, amb les cadires de fusta i l'escenari",
+      "text": [
+        "La sala gran de l'edifici de 1929, amb platea de butaques i escenari amb teló. Hi han passat funcions de teatre, balls, actes públics, conferències i assemblees.",
+        "Per a funcions, concerts, presentacions, conferències, festes i actes amb públic."
+      ],
+      "usos": [
+        "Teatre",
+        "Concerts",
+        "Conferències",
+        "Balls",
+        "Assemblees"
+      ]
+    },
+    {
+      "id": "sala-polivalent",
+      "nom": "Sala polivalent",
+      "subtitol": "Un espai diàfan i versàtil",
+      "m2": 123,
+      "aforament": null,
+      "planta": null,
+      "foto": null,
+      "alt": "",
+      "text": [
+        "Una sala molt àmplia que s'adapta a gairebé tot: tallers, assajos, exposicions, reunions d'entitats i celebracions."
+      ],
+      "usos": [
+        "Tallers",
+        "Assajos",
+        "Exposicions",
+        "Reunions",
+        "Celebracions"
+      ]
+    }
+  ],
+  "condicions": [
+    "Les persones i entitats sòcies tenen prioritat i preu reduït.",
+    "Cal fer la sol·licitud amb antelació. Et responem amb disponibilitat i preu.",
+    "Qui fa servir la sala la deixa neta i en bon estat."
+  ]
+}

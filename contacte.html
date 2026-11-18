@@ -1,0 +1,60 @@
+<!--meta {"title": "Contacte", "desc": "Com arribar a la Cooperativa La Moral (c/ Güell i Ferrer, 86, Badalona), telèfon, correu i formulari de contacte.", "nav": "contacte"} -->
+<!doctype html>
+<html lang="ca">
+<head>
+{{head}}
+</head>
+<body>
+{{header}}
+<main id="contingut">
+
+  <header class="pagina">
+    <p class="etiqueta">Contacte</p>
+    <h1>Vine a veure'ns</h1>
+    <p class="entradeta">Al cor del barri del Progrés de Badalona.</p>
+  </header>
+
+  <section class="bloc contacte" aria-labelledby="t-on">
+    <div class="contacte__dades">
+      <h2 id="t-on" class="visualment-amagat">On som</h2>
+      <address>c/ Güell i Ferrer, 86<br>08912 Badalona</address>
+      <ul class="contacte__llista">
+        <li><a href="tel:+34648072109">648 07 21 09</a></li>
+        <li><a href="mailto:lamoralcoop@gmail.com">lamoralcoop@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/cooperativalamoral/" rel="noopener">Instagram · @cooperativalamoral</a></li>
+        <li><a href="https://www.facebook.com/p/Cooperativa-La-Moral-de-Badalona-100095237200768/" rel="noopener">Facebook · Cooperativa La Moral de Badalona</a></li>
+      </ul>
+      <p><strong>Horari d'atenció</strong><br><span class="vf">Dies i hores</span></p>
+      <p><a class="enllac-fort" href="https://www.openstreetmap.org/?mlat=41.44527&amp;mlon=2.24093#map=18/41.44527/2.24093" rel="noopener">Obre el mapa gran</a></p>
+    </div>
+    <div class="mapa">
+      <iframe title="Mapa de situació de la Cooperativa La Moral, c/ Güell i Ferrer 86, Badalona" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=2.2378%2C41.4437%2C2.2441%2C41.4468&amp;layer=mapnik&amp;marker=41.44527%2C2.24093"></iframe>
+    </div>
+  </section>
+
+  <section class="bloc doble doble--form" id="escriu" aria-labelledby="t-escriu">
+    <div>
+      <h2 id="t-escriu">Escriu-nos</h2>
+      <p>Per a qualsevol dubte, proposta o col·laboració. Si vols llogar una sala, fes servir el <a href="/espais#reserva">formulari d'espais</a>; si vols fer-te soci, el del <a href="/raco-del-soci#alta">racó del soci</a>.</p>
+    </div>
+    <form class="formulari" action="/api/formulari" method="post" data-formulari>
+      <input type="hidden" name="tipus" value="contacte">
+      {{form:camps}}
+      <div class="fila">
+        <div class="camp"><label for="c-nom">Nom *</label><input id="c-nom" name="nom" required="required" autocomplete="name" maxlength="100"></div>
+        <div class="camp"><label for="c-correu">Correu *</label><input id="c-correu" name="correu" type="email" required="required" autocomplete="email" maxlength="200"></div>
+      </div>
+      <div class="camp"><label for="c-tema">Tema</label><select id="c-tema" name="tema"><option>Informació general</option><option value="memoria">Memòria i fotos antigues</option><option>Col·laboració o entitat</option><option>Premsa</option><option>Altres</option></select></div>
+      <div class="camp"><label for="c-msg">Missatge *</label><textarea id="c-msg" name="missatge" required="required" minlength="10" maxlength="4000"></textarea></div>
+      {{form:consentiment}}
+      <button class="boto" type="submit">Envia el missatge</button>
+      {{form:estat}}
+    </form>
+  </section>
+
+</main>
+{{footer}}
+{{js:menu}}
+{{js:formulari}}
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!--meta {"title": "Racó del soci", "desc": "Fes-te soci o sòcia de la Cooperativa La Moral de Badalona: veu i vot a l'assemblea, preus reduïts i prioritat a les sales. Alta en línia i pagament per Bizum o transferència.", "nav": "raco-del-soci"} -->
+<!doctype html>
+<html lang="ca">
+<head>
+{{head}}
+</head>
+<body>
+{{header}}
+<main id="contingut">
+
+  <header class="pagina pagina--soci">
+    <p class="etiqueta">Racó del soci</p>
+    <h1>122 anys aguantant gràcies als socis. Ara et toca a tu.</h1>
+    <p class="entradeta">La Moral no té propietaris: és de les persones que en són sòcies. Fer-te'n vol dir tenir veu en el futur d'una casa centenària i gaudir-la més.</p>
+    <nav class="dins-pagina" aria-label="En aquesta pàgina"><a href="#avantatges">Avantatges</a><a href="#alta">Alta</a><a href="#carnet">Carnet digital</a><a href="#proposa">Proposa una activitat</a></nav>
+  </header>
+
+  <section class="bloc" id="avantatges" aria-labelledby="t-avantatges">
+    <div class="bloc__cap"><h2 id="t-avantatges">Què hi guanyes</h2></div>
+    <ul class="avantatges">
+      <li><b>Veu i vot</b><span>A l'assemblea general decideixes els comptes, la programació i qui forma la junta.</span></li>
+      <li><b>Preu reduït</b><span>A les activitats amb entrada. <span class="vf">Confirmar descomptes</span></span></li>
+      <li><b>Prioritat a les sales</b><span>I tarifa de soci per llogar la sala d'actes o la polivalent. <span class="vf">Confirmar</span></span></li>
+      <li><b>Places reservades</b><span>Quan una activitat té places limitades, els socis tenen preferència. <span class="vf">Confirmar</span></span></li>
+    </ul>
+  </section>
+
+  <section class="bloc soci" id="alta" aria-labelledby="t-alta">
+    <div class="soci__info">
+      <h2 id="t-alta">Fes-te'n soci en tres passos</h2>
+      <ol class="passos">
+        <li><b>Omple el formulari</b><span>Dos minuts. No et demanem el DNI ni el compte bancari per internet.</span></li>
+        <li><b>Paga la quota</b><span>Per Bizum o transferència, amb el concepte «Alta soci» i el teu nom.</span></li>
+        <li><b>Benvinguda</b><span>La junta valida l'alta, et confirmem per correu i passes a ser soci de ple dret.</span></li>
+      </ol>
+      <div class="pagament">
+        <h3>Dades de pagament</h3>
+        <dl>
+          <div><dt>Quota anual</dt><dd><span class="vf">__ €</span></dd></div>
+          <div><dt>Bizum</dt><dd><span class="vf">Número</span></dd></div>
+          <div><dt>Transferència</dt><dd><span class="vf">ES__ ____ ____ ____ ____ ____</span></dd></div>
+          <div><dt>Concepte</dt><dd>Alta soci + nom i cognoms</dd></div>
+        </dl>
+        <p class="nota">Envia el justificant a <a href="mailto:lamoralcoop@gmail.com">lamoralcoop@gmail.com</a> o porta'l a la casa.</p>
+      </div>
+    </div>
+    <form class="formulari" action="/api/formulari" method="post" data-formulari>
+      <input type="hidden" name="tipus" value="soci">
+      {{form:camps}}
+      <h3>Sol·licitud d'alta</h3>
+      <div class="fila">
+        <div class="camp"><label for="s-nom">Nom *</label><input id="s-nom" name="nom" required="required" autocomplete="given-name" maxlength="60"></div>
+        <div class="camp"><label for="s-cog">Cognoms *</label><input id="s-cog" name="cognoms" required="required" autocomplete="family-name" maxlength="80"></div>
+      </div>
+      <div class="fila">
+        <div class="camp"><label for="s-correu">Correu *</label><input id="s-correu" name="correu" type="email" required="required" autocomplete="email" maxlength="200"></div>
+        <div class="camp"><label for="s-tel">Telèfon *</label><input id="s-tel" name="telefon" type="tel" required="required" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <div class="camp"><label for="s-adr">Adreça</label><input id="s-adr" name="adreca" autocomplete="street-address" maxlength="150"></div>
+      <div class="fila">
+        <div class="camp"><label for="s-cp">Codi postal</label><input id="s-cp" name="cp" inputmode="numeric" autocomplete="postal-code" maxlength="5"></div>
+        <div class="camp"><label for="s-pob">Població</label><input id="s-pob" name="poblacio" value="Badalona" autocomplete="address-level2" maxlength="60"></div>
+      </div>
+      <fieldset class="camp"><legend>Com pagaràs la quota? *</legend><div class="opcions"><label><input type="radio" name="pagament" value="bizum" required="required"> Bizum</label><label><input type="radio" name="pagament" value="transferencia"> Transferència</label></div></fieldset>
+      <div class="camp"><label for="s-int">Què t'interessa de La Moral?</label><textarea id="s-int" name="missatge" maxlength="1000" placeholder="Ball, teatre, escacs, proposar una activitat…"></textarea></div>
+      {{form:consentiment}}
+      <button class="boto" type="submit">Envia la sol·licitud</button>
+      {{form:estat}}
+    </form>
+  </section>
+
+  <section class="bloc carnet-bloc" id="carnet" aria-labelledby="t-carnet">
+    <div class="carnet" aria-hidden="true">
+      <div class="carnet__cap"><span class="carnet__marca">La Moral</span><span>Soci/sòcia</span></div>
+      <p class="carnet__nom">El teu nom</p>
+      <p class="carnet__num">Núm. 0000 · des de 2027</p>
+      <div class="carnet__qr"></div>
+      <div class="iris iris--carnet"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <div>
+      <p class="etiqueta">Properament</p>
+      <h2 id="t-carnet">El carnet de soci, al mòbil</h2>
+      <p>Estem preparant l'àrea privada de socis: carnet digital amb codi QR, inscripcions amb un clic, convocatòries i documents de l'assemblea, i el pagament de la quota en línia.</p>
+      <p class="nota">Si et fas soci ara, serà el primer que rebràs.</p>
+    </div>
+  </section>
+
+  <section class="bloc doble doble--form" id="proposa" aria-labelledby="t-proposa">
+    <div>
+      <h2 id="t-proposa">Proposa una activitat</h2>
+      <p>Vols fer un taller, un concert, una xerrada o un torneig? Tens una idea per a una festa? Explica-la a la junta. La Moral es fa amb les propostes de la gent.</p>
+    </div>
+    <form class="formulari" action="/api/formulari" method="post" data-formulari>
+      <input type="hidden" name="tipus" value="proposta">
+      {{form:camps}}
+      <div class="fila">
+        <div class="camp"><label for="p-nom">Nom *</label><input id="p-nom" name="nom" required="required" autocomplete="name" maxlength="100"></div>
+        <div class="camp"><label for="p-correu">Correu *</label><input id="p-correu" name="correu" type="email" required="required" autocomplete="email" maxlength="200"></div>
+      </div>
+      <div class="camp"><label for="p-msg">La teva proposta *</label><textarea id="p-msg" name="missatge" required="required" minlength="10" maxlength="3000"></textarea></div>
+      {{form:consentiment}}
+      <button class="boto boto--linia" type="submit">Envia la proposta</button>
+      {{form:estat}}
+    </form>
+  </section>
+
+</main>
+{{footer}}
+{{js:menu}}
+{{js:formulari}}
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!--meta {"title": "Espais", "desc": "La sala d'actes de 140 butaques i la sala polivalent de 123 m² de La Moral, a Badalona. Per a teatre, concerts, tallers, assajos i celebracions. Sol·licita-les en línia.", "nav": "espais"} -->
+<!doctype html>
+<html lang="ca">
+<head>
+{{head}}
+</head>
+<body>
+{{header}}
+<main id="contingut">
+
+  <header class="pagina">
+    <p class="etiqueta">Espais</p>
+    <h1>Dues sales per fer-hi coses</h1>
+    <p class="entradeta">Per a entitats, companyies, escoles i famílies del barri. Explica'ns què vols fer i et responem amb disponibilitat i preu.</p>
+    <nav class="dins-pagina" aria-label="En aquesta pàgina"><a href="#sala-actes">Sala d'actes</a><a href="#sala-polivalent">Sala polivalent</a><a href="#reserva">Sol·licitar una sala</a></nav>
+  </header>
+
+  <div class="espais">
+{{espais}}
+  </div>
+
+  <section class="bloc doble doble--form" id="reserva" aria-labelledby="t-reserva">
+    <div>
+      <h2 id="t-reserva">Sol·licitar una sala</h2>
+      <p>Enviar el formulari no és una reserva confirmada: et respondrem amb la disponibilitat i el preu en pocs dies.</p>
+      <h3>Condicions bàsiques</h3>
+      <ul class="llista">{{espais:condicions}}</ul>
+      <p class="nota"><span class="vf">Tarifes per a socis i no socis</span></p>
+    </div>
+    <form class="formulari" action="/api/formulari" method="post" data-formulari>
+      <input type="hidden" name="tipus" value="reserva">
+      {{form:camps}}
+      <div class="camp"><label for="r-espai">Espai *</label><select id="r-espai" name="espai" required="required">{{espais:opcions}}</select></div>
+      <div class="fila">
+        <div class="camp"><label for="r-data">Data *</label><input id="r-data" name="data" type="date" required="required"></div>
+        <div class="camp"><label for="r-hora">Horari *</label><input id="r-hora" name="horari" required="required" placeholder="p. ex. 18.00–21.00" maxlength="40"></div>
+      </div>
+      <div class="fila">
+        <div class="camp"><label for="r-tipus">Tipus d'activitat *</label><input id="r-tipus" name="activitat" required="required" placeholder="Assaig, festa, taller…" maxlength="80"></div>
+        <div class="camp"><label for="r-pers">Persones aprox.</label><input id="r-pers" name="persones" type="number" min="1" max="500"></div>
+      </div>
+      <div class="camp"><label for="r-ent">Entitat (si n'hi ha)</label><input id="r-ent" name="entitat" maxlength="100"></div>
+      <div class="fila">
+        <div class="camp"><label for="r-nom">Nom i cognoms *</label><input id="r-nom" name="nom" required="required" autocomplete="name" maxlength="100"></div>
+        <div class="camp"><label for="r-tel">Telèfon *</label><input id="r-tel" name="telefon" type="tel" required="required" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <div class="camp"><label for="r-correu">Correu *</label><input id="r-correu" name="correu" type="email" required="required" autocomplete="email" maxlength="200"></div>
+      <fieldset class="camp"><legend>Ets soci/sòcia o entitat sòcia?</legend><div class="opcions"><label><input type="radio" name="soci" value="si"> Sí</label><label><input type="radio" name="soci" value="no" checked="checked"> No</label></div></fieldset>
+      <div class="camp"><label for="r-msg">Explica'ns una mica més</label><textarea id="r-msg" name="missatge" maxlength="2000"></textarea></div>
+      {{form:consentiment}}
+      <button class="boto" type="submit">Envia la sol·licitud</button>
+      {{form:estat}}
+    </form>
+  </section>
+
+</main>
+{{footer}}
+{{js:menu}}
+{{js:formulari}}
+</body>
+</html>
