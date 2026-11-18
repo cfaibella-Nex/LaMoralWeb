@@ -409,3 +409,26 @@ figcaption { font-size: 13px; color: var(--gris); margin-top: 8px; }
 .heroi h1 { font-size: clamp(34px, 4.6vw, 60px); margin-top: 28px !important; }
 .heroi h1 em { display: block; }
 @media (prefers-reduced-motion: reduce) { .heroi__fons img, .heroi__cartell img { animation: none; } }
+
+/* Heroi v5: efecte des de baix més marcat i cartell integrat */
+.heroi__fons img { animation: desdebaix2 4.2s cubic-bezier(.16,.8,.2,1) both; }
+@keyframes desdebaix2 {
+  0%   { transform: perspective(700px) rotateX(20deg) scale(1.45) translateY(12%); filter: brightness(.55) blur(2px); }
+  60%  { filter: brightness(.9) blur(0); }
+  100% { transform: none; filter: none; }
+}
+.heroi__cartell { perspective: 900px; }
+.heroi__cartell img {
+  box-shadow: none; border-radius: 0;
+  filter: sepia(.22) saturate(.92) brightness(.95) contrast(.96);
+  opacity: .9;
+  -webkit-mask-image: radial-gradient(ellipse 58% 72% at 50% 50%, #000 70%, transparent 100%);
+          mask-image: radial-gradient(ellipse 58% 72% at 50% 50%, #000 70%, transparent 100%);
+  transform-origin: 50% 100%;
+  animation: cartell2 1.8s 1.2s cubic-bezier(.16,.8,.2,1) both;
+}
+@keyframes cartell2 {
+  from { opacity: 0; transform: rotateX(38deg) translateY(26px) scale(.92); filter: blur(10px) sepia(.22) brightness(.8); }
+  to   { opacity: .9; transform: rotateX(6deg); filter: sepia(.22) saturate(.92) brightness(.95) contrast(.96); }
+}
+@media (prefers-reduced-motion: reduce) { .heroi__fons img, .heroi__cartell img { animation: none; } .heroi__cartell img { transform: rotateX(6deg); } }
