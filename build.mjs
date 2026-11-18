@@ -37,10 +37,11 @@ const anteriors = ordenades.filter((a) => a.data < avui).reverse();
 /* <picture> amb webp + jpg; `petita` = sufix d'amplada si n'hi ha una versió reduïda. */
 const MIDES = {
   'facana-detall': [1400, 1050, 800], 'facana-bandera': [1260, 946, 800], 'botiga-1934': [1400, 869, 800],
-  'facana-sol': [700, 513], 'botiga-sepia': [700, 513], 'teatre-antic': [700, 513], 'taula-120': [700, 525],
+  'facana-sol': [700, 513], 'botiga-sepia': [700, 513], 'teatre-antic': [992, 727], 'taula-120': [700, 525],
   'junta-2024': [700, 482], 'moneda-social': [700, 978],
   'facana-panoramica': [1909, 502], 'cartell': [1100, 367, 560],
   'sala-actes-buida': [811, 823], 'facana-1929': [834, 812], 'sala-polivalent': [786, 838], 'sala-actes-cadires': [817, 811], 'sala-estar': [1100, 793],
+  'facana-1926': [800, 1368], 'cafe-antic': [724, 435], 'carnisseria-antiga': [800, 600], 'facana-bandera-cat': [595, 805], 'facana-sol-2': [640, 480],
 };
 function foto(nom, alt, { sizes = '100vw', classe = '', lazy = true, prioritat = false } = {}) {
   const [w, h, petita] = MIDES[nom] || [800, 600];
@@ -130,6 +131,17 @@ function galeriaHTML() {
   </li>`).join('')}</ul>`;
 }
 
+const MEMORIA = [
+  ['facana-1926', 'La façana acabada de construir, amb el tendal de la Cooperativa Obrera La Moral sobre la botiga.', 'alta'],
+  ['cafe-antic', 'El cafè de la cooperativa: taules de marbre, el taulell i les ampolles al fons.', ''],
+  ['carnisseria-antiga', 'La carnisseria de la botiga, una de les seccions més concorregudes.', ''],
+  ['teatre-antic', "La sala d'actes amb les cadires de fusta i l'escenari amb l'escut de l'entitat.", 'ampla'],
+  ['botiga-1934', 'La botiga de comestibles el 1934. Foto: Nyssen / Museu de Badalona, fons L\'Abans.', 'full'],
+];
+function memoriaHTML() {
+  return `<ul class="memoria-galeria">${MEMORIA.map(([f, txt, cls]) => `<li class="mem${cls ? ' mem--' + cls : ''}"><figure>${foto(f, txt, { sizes: '(min-width: 960px) 40vw, 92vw' })}<figcaption>${esc(txt)}</figcaption></figure></li>`).join('')}</ul>`;
+}
+
 const nav = [
   ['inici', '/', 'Inici'],
   ['historia', '/historia', 'Història'],
@@ -181,6 +193,9 @@ function render(fitxer) {
     '{{form:estat}}': estat,
     '{{foto:facana-detall}}': foto('facana-detall', "La façana de La Moral, amb l'esgrafiat «Cooperativa Obrera de Consumo La Moral» entre els arcs", { sizes: '(min-width: 960px) 52vw, 100vw', lazy: false, prioritat: true }),
     '{{foto:heroi-fons}}': foto('facana-panoramica', '', { sizes: '100vw', classe: 'heroi__fons', lazy: false, prioritat: true }),
+    '{{foto:heroi-2}}': foto('facana-bandera-cat', '', { sizes: '100vw', classe: 'heroi__fons heroi__fons--2' }),
+    '{{foto:heroi-3}}': foto('facana-sol-2', '', { sizes: '100vw', classe: 'heroi__fons heroi__fons--3' }),
+    '{{memoria}}': memoriaHTML(),
     '{{foto:cartell}}': foto('cartell', 'Societat Cooperativa de Consum La Moral', { sizes: '(min-width: 760px) 560px, 86vw', classe: 'heroi__cartell', lazy: false }),
     '{{foto:facana-bandera}}': foto('facana-bandera', 'La façana de Güell i Ferrer, 86, amb la bandera de la cooperació i la pancarta dels 120 anys', { sizes: '(min-width: 960px) 50vw, 100vw' }),
     '{{foto:botiga-1934}}': foto('botiga-1934', "L'interior de la botiga de la cooperativa el 1934, amb prestatges plens i sacs de gra al llarg del taulell", { sizes: '100vw' }),

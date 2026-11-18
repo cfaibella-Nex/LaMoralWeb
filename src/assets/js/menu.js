@@ -21,3 +21,38 @@ if (casa) {
     li.addEventListener('click', () => obre(li));
   });
 }
+
+/* Reel de la portada: 3 fotos de la façana. La 1a entra amb l'efecte des de baix (CSS),
+   després la 2a s'obre en cercle i la 3a amb una cortina. Es pausa en passar per sobre. */
+const heroi = document.querySelector('.heroi');
+const quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (heroi && !quiet) {
+  const fotos = [...heroi.querySelectorAll('.heroi__fons')];
+  const barres = [...heroi.querySelectorAll('.heroi__reel span')];
+  const DURADA = [7500, 6500, 6500];
+  let i = 0, t = null, restant = DURADA[0], inici = 0, pausa = false;
+  if (fotos.length === 3) {
+    heroi.setAttribute('data-reel', '');
+    fotos[0].classList.add('es-actiu');
+    const marca = () => barres.forEach((b, k) => { b.classList.toggle('fet', k < i); b.classList.remove('ara'); });
+    const arrenca = (ms) => {
+      marca(); void barres[i].offsetWidth; barres[i].style.setProperty('--durada', ms + 'ms'); barres[i].classList.add('ara');
+      inici = performance.now(); restant = ms; t = setTimeout(seguent, ms);
+    };
+    const seguent = () => {
+      const ant = fotos[i];
+      i = (i + 1) % 3;
+      fotos.forEach((f) => f.classList.remove('surt', 'torna'));
+      ant.classList.remove('es-actiu'); ant.classList.add('surt');
+      const nova = fotos[i];
+      nova.classList.remove('es-actiu'); void nova.offsetWidth;
+      if (i === 0) nova.classList.add('torna');
+      nova.classList.add('es-actiu');
+      setTimeout(() => ant.classList.remove('surt'), 1700);
+      arrenca(DURADA[i]);
+    };
+    heroi.addEventListener('mouseenter', () => { if (pausa) return; pausa = true; clearTimeout(t); restant -= performance.now() - inici; });
+    heroi.addEventListener('mouseleave', () => { if (!pausa) return; pausa = false; inici = performance.now(); t = setTimeout(seguent, Math.max(restant, 400)); });
+    arrenca(DURADA[0]);
+  }
+}
