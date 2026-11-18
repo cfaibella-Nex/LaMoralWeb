@@ -432,3 +432,24 @@ figcaption { font-size: 13px; color: var(--gris); margin-top: 8px; }
   to   { opacity: .9; transform: rotateX(6deg); filter: sepia(.22) saturate(.92) brightness(.95) contrast(.96); }
 }
 @media (prefers-reduced-motion: reduce) { .heroi__fons img, .heroi__cartell img { animation: none; } .heroi__cartell img { transform: rotateX(6deg); } }
+
+/* Galeria «Entra a la casa»: franges que s'obren en passar per sobre */
+.bloc--casa { padding-top: 72px; padding-bottom: 72px; }
+.casa { display: flex; gap: 10px; height: clamp(380px, 46vw, 560px); }
+.casa__item { position: relative; flex: 1; min-width: 0; overflow: hidden; border-radius: 999px 999px var(--r) var(--r) / 140px 140px var(--r) var(--r); border: 1.5px solid var(--tinta); cursor: pointer; transition: flex-grow .7s cubic-bezier(.2,.7,.2,1); outline-offset: 4px; }
+.casa__item picture, .casa__item img { width: 100%; height: 100%; object-fit: cover; }
+.casa__item img { filter: saturate(.75) brightness(.82); transform: scale(1.08); transition: transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s; }
+.casa:hover .casa__item, .casa:focus-within .casa__item { flex-grow: 1; }
+.casa__item.is-obert, .casa .casa__item:hover, .casa .casa__item:focus-visible { flex-grow: 4.2; }
+.casa__item.is-obert img, .casa__item:hover img, .casa__item:focus-visible img { filter: none; transform: scale(1); }
+.casa__text { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 20px; background: linear-gradient(transparent, rgba(30,26,23,.85)); color: var(--paper); opacity: 0; transform: translateY(12px); transition: opacity .45s .15s, transform .45s .15s; white-space: nowrap; }
+.casa__item.is-obert .casa__text, .casa__item:hover .casa__text, .casa__item:focus-visible .casa__text { opacity: 1; transform: none; }
+.casa__t { font: 400 28px/1.1 var(--display); }
+.casa__d { font-size: 14px; color: #E9E2D8; margin-top: 4px; }
+@media (max-width: 760px) {
+  .casa { height: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .casa__item, .casa__item.is-obert { flex: 0 0 78vw; height: 420px; scroll-snap-align: center; }
+  .casa__item img { filter: none; transform: none; }
+  .casa__text { opacity: 1; transform: none; white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) { .casa__item, .casa__item img { transition: none; } }

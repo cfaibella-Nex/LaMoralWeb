@@ -10,3 +10,14 @@ if (menu) {
   document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
   menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { menu.open = false; }));
 }
+
+/* Galeria de la portada: la franja oberta segueix el ratolí o el focus */
+const casa = document.querySelector('.casa');
+if (casa) {
+  const obre = (li) => casa.querySelectorAll('.casa__item').forEach((x) => x.classList.toggle('is-obert', x === li));
+  casa.querySelectorAll('.casa__item').forEach((li) => {
+    li.addEventListener('mouseenter', () => obre(li));
+    li.addEventListener('focus', () => obre(li));
+    li.addEventListener('click', () => obre(li));
+  });
+}

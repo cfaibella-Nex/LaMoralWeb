@@ -40,6 +40,7 @@ const MIDES = {
   'facana-sol': [700, 513], 'botiga-sepia': [700, 513], 'teatre-antic': [700, 513], 'taula-120': [700, 525],
   'junta-2024': [700, 482], 'moneda-social': [700, 978],
   'facana-panoramica': [1909, 502], 'cartell': [1100, 367, 560],
+  'sala-actes-buida': [811, 823], 'facana-1929': [834, 812], 'sala-polivalent': [786, 838], 'sala-actes-cadires': [817, 811], 'sala-estar': [1100, 793],
 };
 function foto(nom, alt, { sizes = '100vw', classe = '', lazy = true, prioritat = false } = {}) {
   const [w, h, petita] = MIDES[nom] || [800, 600];
@@ -114,6 +115,21 @@ function espaisHTML() {
 const opcionsEspais = () => espais.espais.map((e) => `<option value="${esc(e.id)}">${esc(e.nom)}</option>`).join('') + `<option value="no-ho-se">No ho sé, aconsella'm</option>`;
 const condicionsHTML = () => espais.condicions.map((c) => `<li>${esc(c)}</li>`).join('');
 
+
+const GALERIA = [
+  ['sala-actes-cadires', "Sala d'actes", "140 butaques mirant l'escenari", "La sala d'actes preparada per a una funció, amb les cadires blaves en files"],
+  ['sala-estar', 'Racó d\'estar', 'Butaques, llum càlida i l\'escala de fusta', 'Racó d\'estar amb butaques blaves, un llum de taula i una escala de fusta granat'],
+  ['facana-1929', 'La façana', 'Josep Alemany i Juvé, 1926–1929', "La façana rosada de La Moral amb els arcs, l'esgrafiat i la data 1929"],
+  ['sala-polivalent', 'Sala polivalent', '123 m² per a tallers i assajos', 'Sala diàfana amb parquet i bigues granat'],
+  ['sala-actes-buida', 'Pista de ball', 'La sala buida, a punt per ballar', "La sala d'actes buida amb el terra de parquet i el teló vermell de l'escenari"],
+];
+function galeriaHTML() {
+  return `<ul class="casa">${GALERIA.map(([f, t, d, alt], i) => `<li class="casa__item${i === 0 ? ' is-obert' : ''}" tabindex="0">
+    ${foto(f, alt, { sizes: '(min-width: 760px) 50vw, 82vw' })}
+    <div class="casa__text"><p class="casa__t">${esc(t)}</p><p class="casa__d">${esc(d)}</p></div>
+  </li>`).join('')}</ul>`;
+}
+
 const nav = [
   ['inici', '/', 'Inici'],
   ['historia', '/historia', 'Història'],
@@ -157,6 +173,7 @@ function render(fitxer) {
     '{{agenda:filtre}}': filtreHTML(),
     '{{agenda:opcions}}': opcionsActivitats(),
     '{{espais}}': espaisHTML(),
+    '{{galeria:casa}}': galeriaHTML(),
     '{{espais:opcions}}': opcionsEspais(),
     '{{espais:condicions}}': condicionsHTML(),
     '{{form:camps}}': camps,
