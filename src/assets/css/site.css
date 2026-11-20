@@ -608,7 +608,7 @@ select option { background: var(--paper); color: var(--tinta); }
 .heroi h1, .heroi .entradeta { text-shadow: 0 2px 18px rgb(var(--negre) / .5); }
 .heroi__peu { color: var(--clar); text-shadow: 0 1px 8px rgb(var(--negre) / .6); }
 /* Xifres en una banda d'estuc, cada una amb un color de la bandera */
-.xifres { max-width: none; background: var(--rosa); border: 0; padding: 0 max(24px, calc((100% - var(--amplada)) / 2)); }
+.xifres { max-width: none; background: var(--rosa); border: 0; padding: 0 max(24px, calc((100% - var(--amplada)) / 2 + 24px)); }
 .xifres div { border-left-color: rgb(var(--vel) / .1); }
 .xifres div:nth-child(2) b { color: var(--granat); }
 .xifres div:nth-child(3) b { color: var(--verd); }
@@ -644,7 +644,7 @@ select option { background: var(--paper); color: var(--tinta); }
 .amb-foto .dins-pagina a { border-color: rgb(var(--llum) / .7); color: var(--clar); }
 .amb-foto .dins-pagina a:hover { background: var(--clar); color: var(--tinta); }
 /* Amplada completa amb el contingut al contenidor */
-.pagina.amb-foto, .portes.amb-foto { max-width: none; padding-left: max(24px, calc((100% - var(--amplada)) / 2)); padding-right: max(24px, calc((100% - var(--amplada)) / 2)); }
+.pagina.amb-foto, .portes.amb-foto { max-width: none; padding-left: max(24px, calc((100% - var(--amplada)) / 2 + 24px)); padding-right: max(24px, calc((100% - var(--amplada)) / 2 + 24px)); }
 .pagina.amb-foto { padding-top: 112px; padding-bottom: 96px; margin-bottom: 24px; }
 .pagina.amb-foto > * { max-width: 760px; }
 /* Xifres sobre el teatre antic */
@@ -678,3 +678,31 @@ select option { background: var(--paper); color: var(--tinta); }
 .amb-foto p, .amb-foto span, .amb-foto a { text-shadow: 0 1px 8px rgb(var(--negre) / .55); }
 .foto-historia.vel-fosc::before { background: linear-gradient(90deg, rgb(var(--vel) / .86) 0%, rgb(var(--vel) / .64) 55%, rgb(var(--vel) / .3) 100%); }
 .foto-panoramica.vel-granat::before { background: linear-gradient(90deg, rgb(var(--vel-g) / .64) 0%, rgb(var(--vel-g) / .44) 55%, rgb(var(--vel-g) / .18) 100%), linear-gradient(90deg, rgb(var(--vel) / .44), rgb(var(--vel) / .24)); }
+
+/* ============ v12 · Fons amb personalitat: esgrafiat i fotos rentades ============ */
+/* L'esgrafiat floral de la façana de 1929, extret de la foto, com a marca d'aigua */
+.esgrafiat, .lavat { position: relative; isolation: isolate; overflow: clip; max-width: none; padding-left: max(24px, calc((100% - var(--amplada)) / 2 + 24px)); padding-right: max(24px, calc((100% - var(--amplada)) / 2 + 24px)); }
+.cronologia.esgrafiat { padding-top: 48px; }
+.esgrafiat::after { content: ""; position: absolute; z-index: -1; pointer-events: none; top: 24px; right: -60px; width: min(680px, 60vw); aspect-ratio: 1381 / 682; opacity: .1;
+  background: url("/assets/img/esgrafiat-garlanda.png") center / contain no-repeat; background: image-set(url("/assets/img/esgrafiat-garlanda.webp") type("image/webp"), url("/assets/img/esgrafiat-garlanda.png") type("image/png")) center / contain no-repeat; }
+.esgrafiat--esquerra::after { right: auto; left: -60px; top: auto; bottom: 24px; transform: scaleX(-1); }
+.esgrafiat--petxina::after { width: min(360px, 50vw); aspect-ratio: 673 / 282; right: 6%; top: 32px;
+  background: url("/assets/img/esgrafiat-petxina.png") center / contain no-repeat; background: image-set(url("/assets/img/esgrafiat-petxina.webp") type("image/webp"), url("/assets/img/esgrafiat-petxina.png") type("image/png")) center / contain no-repeat; }
+.peu { position: relative; isolation: isolate; overflow: clip; }
+.peu::after { content: ""; position: absolute; z-index: -1; pointer-events: none; right: 4%; top: 28px; width: 220px; aspect-ratio: 483 / 496; opacity: .07; filter: brightness(3);
+  background: url("/assets/img/esgrafiat-cornucopia.png") center / contain no-repeat; }
+
+/* Foto rentada: la foto integrada al fons, monocroma en to d'estuc i amb vel clar; el text queda fosc */
+.lavat { background-color: var(--rosa); background-position: center; background-size: cover; background-repeat: no-repeat; background-blend-mode: luminosity; }
+.lavat::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgb(252 251 249 / .94) 0%, rgb(252 251 249 / .86) 48%, rgb(252 251 249 / .76) 100%); }
+.lavat.doble--form::before, .lavat.soci::before { background: linear-gradient(90deg, rgb(252 251 249 / .93) 0%, rgb(252 251 249 / .8) 50%, rgb(252 251 249 / .5) 100%); }
+.lavat .formulari { box-shadow: 0 30px 60px -30px rgb(var(--vel) / .35); border-color: var(--paper); }
+.foto-facana29 { background-image: url("/assets/img/facana-1929.jpg"); background-image: image-set(url("/assets/img/facana-1929.webp") type("image/webp"), url("/assets/img/facana-1929.jpg") type("image/jpeg")); background-position: center 30%; }
+.foto-antiga { background-image: url("/assets/img/facana-1926.jpg"); background-image: image-set(url("/assets/img/facana-1926.webp") type("image/webp"), url("/assets/img/facana-1926.jpg") type("image/jpeg")); background-position: center 35%; }
+.memoria.lavat { text-align: center; }
+.memoria.lavat::before { background: radial-gradient(ellipse 60% 70% at 50% 50%, rgb(252 251 249 / .94), rgb(252 251 249 / .72)); }
+.memoria.lavat > * { max-width: 760px; margin-left: auto; margin-right: auto; }
+.lavat .propers, .lavat .agenda { border-top-color: var(--tinta); }
+@media (max-width: 760px) { .lavat::before, .lavat.doble--form::before, .lavat.soci::before { background: rgb(252 251 249 / .9); } .esgrafiat::after { opacity: .07; } }
+ol.cronologia.esgrafiat { padding-left: max(24px, calc((100% - var(--amplada)) / 2 + 24px)); padding-right: max(24px, calc((100% - var(--amplada)) / 2 + 24px)); padding-bottom: 40px; }
+.foto-historia.vel-fosc::before { background: linear-gradient(90deg, rgb(var(--vel) / .9) 0%, rgb(var(--vel) / .7) 55%, rgb(var(--vel) / .34) 100%); }

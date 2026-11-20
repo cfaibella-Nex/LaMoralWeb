@@ -36,11 +36,11 @@ const anteriors = ordenades.filter((a) => a.data < avui).reverse();
 
 /* <picture> amb webp + jpg; `petita` = sufix d'amplada si n'hi ha una versió reduïda. */
 const MIDES = {
-  'facana-detall': [1400, 1050, 800], 'facana-bandera': [1260, 946, 800], 'botiga-1934': [1400, 869, 800],
-  'facana-sol': [700, 513], 'botiga-sepia': [700, 513], 'teatre-antic': [992, 727], 'taula-120': [700, 525],
+  'facana-detall': [2000, 1500, 800], 'facana-bandera': [1260, 946, 800], 'botiga-1934': [1400, 869, 800],
+  'facana-sol': [700, 513], 'botiga-sepia': [700, 513], 'teatre-antic': [1800, 1319, 800], 'taula-120': [700, 525],
   'junta-2024': [700, 482], 'moneda-social': [700, 978],
-  'facana-panoramica': [1909, 502], 'cartell': [1100, 367, 560],
-  'sala-actes-buida': [811, 823], 'facana-1929': [834, 812], 'sala-polivalent': [786, 838], 'sala-actes-cadires': [817, 811], 'sala-estar': [1100, 793],
+  'facana-panoramica': [2600, 684, 800], 'cartell': [1100, 367, 560],
+  'sala-actes-buida': [1600, 1624, 800], 'facana-1929': [1600, 1558, 800], 'sala-polivalent': [1500, 1599, 800], 'sala-actes-cadires': [1600, 1588, 800], 'sala-estar': [1800, 1298, 800],
   'facana-1926': [800, 1368], 'cafe-antic': [724, 435], 'carnisseria-antiga': [800, 600], 'facana-bandera-cat': [595, 805], 'facana-sol-2': [640, 480],
 };
 function foto(nom, alt, { sizes = '100vw', classe = '', lazy = true, prioritat = false } = {}) {
