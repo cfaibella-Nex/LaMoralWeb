@@ -118,7 +118,7 @@ const condicionsHTML = () => espais.condicions.map((c) => `<li>${esc(c)}</li>`).
 
 
 const GALERIA = [
-  ['sala-actes-cadires', "Sala d'actes", "140 butaques mirant l'escenari", "La sala d'actes preparada per a una funció, amb les cadires blaves en files"],
+  ['sala-actes-cadires', "Sala d'actes", "Aforament per a 100 persones", "La sala d'actes preparada per a una funció, amb les cadires blaves en files"],
   ['sala-estar', 'Racó d\'estar', 'Butaques, llum càlida i l\'escala de fusta', 'Racó d\'estar amb butaques blaves, un llum de taula i una escala de fusta granat'],
   ['facana-1929', 'La façana', 'Josep Alemany i Juvé, de 1926 a 1929', "La façana rosada de La Moral amb els arcs, l'esgrafiat i la data 1929"],
   ['sala-polivalent', 'Sala polivalent', '123 m² per a tallers i assajos', 'Sala diàfana amb parquet i bigues granat'],

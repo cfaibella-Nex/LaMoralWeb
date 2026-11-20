@@ -44,6 +44,8 @@
   --r: 4px;
   --ombra: none;
   --vel: 30 26 23;      /* capes fosques sobre foto */
+  --vel-g: 78 24 36;    /* capa granat sobre foto */
+  --clar-1: #F4A794; --clar-2: #F6D06A; --clar-3: #93D6AE; --clar-4: #A9C2F2; /* bandera sobre fosc */
   --llum: 251 248 243;  /* capes clares sobre foto */
   --negre: 0 0 0;
   --vf-fons: rgb(217 178 106 / .22);
@@ -617,3 +619,49 @@ select option { background: var(--paper); color: var(--tinta); }
 .banda .boto--clar { background: var(--clar); color: var(--tinta); border-color: var(--clar); }
 .banda .boto--clar:hover { background: var(--estuc); border-color: var(--estuc); }
 .peu .boto--clar { background: var(--clar); border-color: var(--clar); }
+
+/* ============ v10 · Seccions amb foto i vel ============ */
+.amb-foto { position: relative; isolation: isolate; color: var(--clar); background-color: var(--fosc); background-position: center; background-size: cover; background-repeat: no-repeat; }
+.amb-foto::before { content: ""; position: absolute; inset: 0; z-index: -1; }
+.vel-fosc::before { background: linear-gradient(180deg, rgb(var(--vel) / .74), rgb(var(--vel) / .84)); }
+.vel-granat::before { background: linear-gradient(180deg, rgb(var(--vel-g) / .82), rgb(var(--vel-g) / .9)); }
+.foto-teatre { background-image: url("/assets/img/teatre-antic.jpg"); background-image: image-set(url("/assets/img/teatre-antic.webp") type("image/webp"), url("/assets/img/teatre-antic.jpg") type("image/jpeg")); }
+.foto-pista { background-image: url("/assets/img/sala-actes-buida.jpg"); background-image: image-set(url("/assets/img/sala-actes-buida.webp") type("image/webp"), url("/assets/img/sala-actes-buida.jpg") type("image/jpeg")); }
+.foto-facana { background-image: url("/assets/img/facana-detall.jpg"); background-image: image-set(url("/assets/img/facana-detall.webp") type("image/webp"), url("/assets/img/facana-detall.jpg") type("image/jpeg")); }
+.foto-estar { background-image: url("/assets/img/sala-estar.jpg"); background-image: image-set(url("/assets/img/sala-estar.webp") type("image/webp"), url("/assets/img/sala-estar.jpg") type("image/jpeg")); }
+.foto-sala { background-image: url("/assets/img/sala-actes-cadires.jpg"); background-image: image-set(url("/assets/img/sala-actes-cadires.webp") type("image/webp"), url("/assets/img/sala-actes-cadires.jpg") type("image/jpeg")); }
+.foto-panoramica { background-image: url("/assets/img/facana-panoramica.jpg"); background-image: image-set(url("/assets/img/facana-panoramica.webp") type("image/webp"), url("/assets/img/facana-panoramica.jpg") type("image/jpeg")); }
+.foto-taula { background-image: url("/assets/img/taula-120.jpg"); background-image: image-set(url("/assets/img/taula-120.webp") type("image/webp"), url("/assets/img/taula-120.jpg") type("image/jpeg")); }
+.foto-teatre { background-position: center 40%; }
+.foto-facana { background-position: 30% 30%; }
+.foto-taula { background-position: center 35%; }
+/* Text dins les seccions amb foto */
+.amb-foto h1, .amb-foto h2, .amb-foto h3 { color: var(--clar); }
+.amb-foto p, .amb-foto span, .amb-foto .nota, .amb-foto .entradeta { color: var(--sobre-fosc); }
+.amb-foto .etiqueta { color: var(--estuc); }
+.amb-foto a { color: var(--clar); }
+.amb-foto .vf { color: var(--clar); }
+.amb-foto .dins-pagina a { border-color: rgb(var(--llum) / .7); color: var(--clar); }
+.amb-foto .dins-pagina a:hover { background: var(--clar); color: var(--tinta); }
+/* Amplada completa amb el contingut al contenidor */
+.pagina.amb-foto, .portes.amb-foto { max-width: none; padding-left: max(24px, calc((100% - var(--amplada)) / 2)); padding-right: max(24px, calc((100% - var(--amplada)) / 2)); }
+.pagina.amb-foto { padding-top: 112px; padding-bottom: 96px; margin-bottom: 24px; }
+.pagina.amb-foto > * { max-width: 760px; }
+/* Xifres sobre el teatre antic */
+.xifres.amb-foto { background-color: var(--fosc); }
+.xifres.amb-foto div { border-left-color: rgb(var(--llum) / .18); padding-top: 64px; padding-bottom: 60px; }
+.xifres.amb-foto div:nth-child(1) b { color: var(--clar-1); }
+.xifres.amb-foto div:nth-child(2) b { color: var(--clar-2); }
+.xifres.amb-foto div:nth-child(3) b { color: var(--clar-3); }
+.xifres.amb-foto div:nth-child(4) b { color: var(--clar-4); }
+/* Portes sobre la pista de ball */
+.portes.amb-foto { padding-top: 96px; padding-bottom: 96px; }
+.portes.amb-foto .porta { border-color: rgb(var(--llum) / .2); }
+.portes.amb-foto .porta__d { color: var(--sobre-fosc); }
+.portes.amb-foto .porta:nth-of-type(1) .porta__num { color: var(--clar-1); }
+.portes.amb-foto .porta:nth-of-type(2) .porta__num { color: var(--clar-3); }
+.portes.amb-foto .porta:nth-of-type(3) .porta__num { color: var(--clar-4); }
+.portes.amb-foto .porta--destac .porta__t { color: var(--clar-2); }
+.portes.amb-foto .porta:hover .porta__t, .portes.amb-foto .porta:focus-visible .porta__t { color: var(--estuc); }
+.amb-foto a:focus-visible { outline-color: var(--clar); }
+@media (max-width: 760px) { .pagina.amb-foto { padding-top: 72px; padding-bottom: 64px; } }
