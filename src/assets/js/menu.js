@@ -23,7 +23,7 @@ if (casa) {
 }
 
 /* Reel de la portada: 3 fotos de la façana. La 1a entra amb l'efecte des de baix (CSS),
-   després la 2a s'obre en cercle i la 3a amb una cortina. Es pausa en passar per sobre. */
+   després la 2a i la 3a entren amb una fosa i un zoom lent. Es pausa si la pestanya queda amagada. */
 const heroi = document.querySelector('.heroi');
 const quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (heroi && !quiet) {
@@ -51,8 +51,11 @@ if (heroi && !quiet) {
       setTimeout(() => ant.classList.remove('surt'), 1700);
       arrenca(DURADA[i]);
     };
-    heroi.addEventListener('mouseenter', () => { if (pausa) return; pausa = true; clearTimeout(t); restant -= performance.now() - inici; });
-    heroi.addEventListener('mouseleave', () => { if (!pausa) return; pausa = false; inici = performance.now(); t = setTimeout(seguent, Math.max(restant, 400)); });
+    // Només es pausa quan la pestanya no es veu (el hero ocupa tota la pantalla: pausar amb el ratolí l'encallava)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { if (pausa) return; pausa = true; clearTimeout(t); restant -= performance.now() - inici; }
+      else if (pausa) { pausa = false; inici = performance.now(); t = setTimeout(seguent, Math.max(restant, 400)); }
+    });
     arrenca(DURADA[0]);
   }
 }
