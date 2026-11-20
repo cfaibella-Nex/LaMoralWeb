@@ -665,3 +665,16 @@ select option { background: var(--paper); color: var(--tinta); }
 .portes.amb-foto .porta:hover .porta__t, .portes.amb-foto .porta:focus-visible .porta__t { color: var(--estuc); }
 .amb-foto a:focus-visible { outline-color: var(--clar); }
 @media (max-width: 760px) { .pagina.amb-foto { padding-top: 72px; padding-bottom: 64px; } }
+
+/* ============ v11 · Vels més suaus i Història en blanc i negre ============ */
+.foto-historia { background-image: url("/assets/img/teatre-antic-bn.jpg"); background-image: image-set(url("/assets/img/teatre-antic-bn.webp") type("image/webp"), url("/assets/img/teatre-antic-bn.jpg") type("image/jpeg")); background-position: center 45%; }
+/* Capçaleres: més fosc al costat del text, la foto respira a la dreta */
+.vel-fosc::before { background: linear-gradient(90deg, rgb(var(--vel) / .8) 0%, rgb(var(--vel) / .58) 55%, rgb(var(--vel) / .26) 100%); }
+.vel-granat::before { background: linear-gradient(90deg, rgb(var(--vel-g) / .6) 0%, rgb(var(--vel-g) / .4) 55%, rgb(var(--vel-g) / .16) 100%), linear-gradient(90deg, rgb(var(--vel) / .4), rgb(var(--vel) / .22)); }
+/* Seccions amb text a tota l'amplada: vel uniforme però lleuger */
+.xifres.vel-granat::before, .franja.vel-granat::before { background: linear-gradient(rgb(var(--vel-g) / .5), rgb(var(--vel-g) / .5)), linear-gradient(rgb(var(--vel) / .36), rgb(var(--vel) / .36)); }
+.portes.vel-fosc::before { background: linear-gradient(rgb(var(--vel) / .62), rgb(var(--vel) / .7)); }
+.amb-foto h1, .amb-foto h2, .amb-foto .porta__t, .amb-foto b { text-shadow: 0 2px 16px rgb(var(--negre) / .45); }
+.amb-foto p, .amb-foto span, .amb-foto a { text-shadow: 0 1px 8px rgb(var(--negre) / .55); }
+.foto-historia.vel-fosc::before { background: linear-gradient(90deg, rgb(var(--vel) / .86) 0%, rgb(var(--vel) / .64) 55%, rgb(var(--vel) / .3) 100%); }
+.foto-panoramica.vel-granat::before { background: linear-gradient(90deg, rgb(var(--vel-g) / .64) 0%, rgb(var(--vel-g) / .44) 55%, rgb(var(--vel-g) / .18) 100%), linear-gradient(90deg, rgb(var(--vel) / .44), rgb(var(--vel) / .24)); }
