@@ -60,7 +60,7 @@ function filaAgenda(a, { passada = false } = {}) {
   <div class="act__cos">
     <p class="act__cat">${esc(a.cat)}</p>
     <h3>${titol}</h3>
-    <p class="act__meta">${esc(dataLlarga(a.data))} · ${esc(a.hora)} h · ${esc(a.lloc)}</p>
+    <p class="act__meta meta"><span>${esc(dataLlarga(a.data))}</span><span>${esc(a.hora)} h</span><span>${esc(a.lloc)}</span></p>
     ${a.text ? `<p class="act__text">${esc(a.text)}</p>` : ''}
   </div>
   <div class="act__peu">${passada ? '' : `<p class="act__preu">Socis <b>${esc(a.preuSoci)}</b><br>General <b>${esc(a.preu)}</b></p>`}${accio}</div>
@@ -71,7 +71,7 @@ const llista = (arr, o) => arr.length ? arr.map((a) => filaAgenda(a, o)).join('\
 function propersInici() {
   const tres = properes.slice(0, 3);
   if (!tres.length) return `<p class="buit">Aviat publicarem les properes activitats.</p>`;
-  return `<ol class="propers">${tres.map((a) => { const p = parts(a.data); return `<li><a href="/agenda#${esc(a.id)}"><time datetime="${a.data}"><b>${p.d}</b> ${MESOS[p.m - 1]}</time><span class="propers__t">${a.exemple ? vf('Exemple') + ' ' : ''}${esc(a.titol)}</span><span class="propers__m">${esc(a.hora)} h · ${esc(a.lloc)}</span></a></li>`; }).join('')}</ol>`;
+  return `<ol class="propers">${tres.map((a) => { const p = parts(a.data); return `<li><a href="/agenda#${esc(a.id)}"><time datetime="${a.data}"><b>${p.d}</b> ${MESOS[p.m - 1]}</time><span class="propers__t">${a.exemple ? vf('Exemple') + ' ' : ''}${esc(a.titol)}</span><span class="propers__m meta"><span>${esc(a.hora)} h</span><span>${esc(a.lloc)}</span></span></a></li>`; }).join('')}</ol>`;
 }
 
 const habitualsHTML = () => agenda.habituals.map((h) => `<li class="hab">
@@ -86,7 +86,7 @@ const filtreHTML = () => {
   if (cats.length < 2) return '';
   return `<div class="filtre" role="group" aria-label="Filtra per tipus d'activitat" hidden><button type="button" data-filtre="totes" aria-pressed="true">Totes</button>${cats.map((c) => `<button type="button" data-filtre="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('')}</div>`;
 };
-const opcionsActivitats = () => properes.filter((a) => a.inscripcio).map((a) => `<option value="${esc(a.id)}">${esc(dataLlarga(a.data))} · ${esc(a.titol)}</option>`).join('');
+const opcionsActivitats = () => properes.filter((a) => a.inscripcio).map((a) => `<option value="${esc(a.id)}">${esc(dataLlarga(a.data))}, ${esc(a.titol)}</option>`).join('');
 
 function espaisHTML() {
   return espais.espais.map((e, n) => {
@@ -120,7 +120,7 @@ const condicionsHTML = () => espais.condicions.map((c) => `<li>${esc(c)}</li>`).
 const GALERIA = [
   ['sala-actes-cadires', "Sala d'actes", "140 butaques mirant l'escenari", "La sala d'actes preparada per a una funció, amb les cadires blaves en files"],
   ['sala-estar', 'Racó d\'estar', 'Butaques, llum càlida i l\'escala de fusta', 'Racó d\'estar amb butaques blaves, un llum de taula i una escala de fusta granat'],
-  ['facana-1929', 'La façana', 'Josep Alemany i Juvé, 1926–1929', "La façana rosada de La Moral amb els arcs, l'esgrafiat i la data 1929"],
+  ['facana-1929', 'La façana', 'Josep Alemany i Juvé, de 1926 a 1929', "La façana rosada de La Moral amb els arcs, l'esgrafiat i la data 1929"],
   ['sala-polivalent', 'Sala polivalent', '123 m² per a tallers i assajos', 'Sala diàfana amb parquet i bigues granat'],
   ['sala-actes-buida', 'Pista de ball', 'La sala buida, a punt per ballar', "La sala d'actes buida amb el terra de parquet i el teló vermell de l'escenari"],
 ];
@@ -193,8 +193,8 @@ function render(fitxer) {
     '{{form:estat}}': estat,
     '{{foto:facana-detall}}': foto('facana-detall', "La façana de La Moral, amb l'esgrafiat «Cooperativa Obrera de Consumo La Moral» entre els arcs", { sizes: '(min-width: 960px) 52vw, 100vw', lazy: false, prioritat: true }),
     '{{foto:heroi-fons}}': foto('facana-panoramica', '', { sizes: '100vw', classe: 'heroi__fons', lazy: false, prioritat: true }),
-    '{{foto:heroi-2}}': foto('facana-bandera-cat', '', { sizes: '100vw', classe: 'heroi__fons heroi__fons--2' }),
-    '{{foto:heroi-3}}': foto('facana-sol-2', '', { sizes: '100vw', classe: 'heroi__fons heroi__fons--3' }),
+    '{{foto:heroi-2}}': foto('facana-1929', '', { sizes: '100vw', classe: 'heroi__fons heroi__fons--2' }),
+    '{{foto:heroi-3}}': foto('facana-detall', '', { sizes: '100vw', classe: 'heroi__fons heroi__fons--3' }),
     '{{memoria}}': memoriaHTML(),
     '{{foto:cartell}}': foto('cartell', 'Societat Cooperativa de Consum La Moral', { sizes: '(min-width: 760px) 560px, 86vw', classe: 'heroi__cartell', lazy: false }),
     '{{foto:facana-bandera}}': foto('facana-bandera', 'La façana de Güell i Ferrer, 86, amb la bandera de la cooperació i la pancarta dels 120 anys', { sizes: '(min-width: 960px) 50vw, 100vw' }),
@@ -221,7 +221,7 @@ rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 cpSync(join(SRC, 'assets'), join(OUT, 'assets'), { recursive: true });
 try { cpSync(join(SRC, 'docs'), join(OUT, 'docs'), { recursive: true }); } catch {}
-for (const f of ['favicon.svg']) { try { statSync(join(SRC, f)); cpSync(join(SRC, f), join(OUT, f)); } catch {} }
+for (const f of ['favicon.svg', 'favicon.ico', 'favicon-32.png', 'apple-touch-icon.png', 'icon-512.png']) { try { statSync(join(SRC, f)); cpSync(join(SRC, f), join(OUT, f)); } catch {} }
 
 const pagines = readdirSync(join(SRC, 'pages')).filter((f) => f.endsWith('.html'));
 for (const p of pagines) writeFileSync(join(OUT, p), render(join(SRC, 'pages', p)));
