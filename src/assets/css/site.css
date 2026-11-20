@@ -1,5 +1,5 @@
-/* Hallmark · redesign: restyle · theme: brand (La Moral, fosc càlid) · genre: editorial · built: the project
-   critique: casa centenària de nit; les fotos fan la feina, el granat de les fusteries és l'únic farcit fort
+/* Hallmark · redesign: restyle · theme: brand (La Moral, calç i colors) · genre: editorial · built: the project
+   critique: casa oberta i alegre; calç càlida, la façana rosa a les fotos, els colors de la bandera cooperativa a les xifres
    waive 19: guions en rangs d'anys (1924–1929) a la cronologia, és la tipografia correcta d'un interval
    waive 62: .casa__text apareix amb :hover/:focus sense script i és visible per defecte en mòbil */
 /* Cooperativa La Moral · site.css
@@ -15,24 +15,27 @@
 @font-face { font-family: "Public Sans"; src: url("/assets/fonts/public-sans-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 
 :root {
-  --pedra: #2E2624;     /* fons: carbó càlid, no negre */
-  --paper: #383028;     /* superfícies elevades */
-  --fosc: #211B19;      /* bandes i peu */
-  --rosa: #4A3631;      /* superfície rosada (hover, xips) */
-  --rosa-clar: #F2D9CE; /* estuc de la façana, text sobre granat */
-  --tinta: #F3ECE6;     /* text, 12.6:1 sobre pedra */
-  --clar: #FBF6F1;      /* text sobre farcits foscos o granat */
-  --gris: #C2B5AA;      /* text secundari, 7.4:1 */
-  --linia: #4A3F3A;     /* només decoratiu */
-  --camp: #998A80;      /* vores de camps, 4.4:1 */
-  --granat: #E8939D;    /* accent de text sobre fosc, 6.4:1 */
-  --granat-f: #F2B3BA;
-  --boto: #9E2F43;      /* farcit granat de les fusteries; blanc a sobre 7.1:1 */
+  --pedra: #FCFBF9;     /* fons: calç càlida, no crema */
+  --paper: #FFFFFF;     /* superfícies */
+  --rosa: #F7E3DA;      /* estuc de la façana, bandes suaus */
+  --fosc: #2A1E1A;      /* bandes fosques i peu */
+  --tinta: #2A1E1A;     /* text, 15.7:1 */
+  --clar: #FFFCFA;      /* text sobre foto, granat o fosc */
+  --sobre-fosc: #F3ECE6; --sobre-fosc-2: #C9BFB2; /* text sobre --fosc: 14.5 i 9.4:1 */
+  --gris: #5E5048;      /* text secundari, 7.5:1 */
+  --linia: #EADFD7;     /* només decoratiu */
+  --camp: #75685E;      /* vores de camps i placeholders, 5.4:1 */
+  --granat: #7A1F2E;    /* accent de text, 9.9:1 */
+  --granat-f: #5C1622;
+  --boto: #9E2F43;      /* farcit granat; blanc a sobre 7.1:1 */
   --boto-f: #82243A;
-  --or: #D9B26A;        /* 7.4:1 */
+  --estuc: #F6D9CC;     /* rosa clar sobre foto i granat */
+  --terracota: #B4442E; /* 5.4:1 */
+  --verd: #2B6E4F; --blau: #2B4C9B; /* colors de la bandera cooperativa, per a xifres grans */
+  --or: #D9B26A;        /* només sobre --fosc (8.2:1) */
   --ok-fons: #E3EBDD; --ok-text: #24361C; --ok-vora: #6E8A5E;
   --ko-fons: #F3DFDB; --ko-text: #5F211B;
-  --vf: #D9B26A;
+  --vf: #9A6F2A;
   --iris-1: #D7282F; --iris-2: #F08A24; --iris-3: #F6D02F; --iris-4: #3E9E48; --iris-5: #45A9DE; --iris-6: #2B4C9B; --iris-7: #7B3F98;
   --display: "Caslon Display", Georgia, serif;
   --serif: "Caslon Text", Georgia, serif;
@@ -44,7 +47,7 @@
   --llum: 251 248 243;  /* capes clares sobre foto */
   --negre: 0 0 0;
   --vf-fons: rgb(217 178 106 / .22);
-  --cap-fons: rgb(46 38 36 / .94);
+  --cap-fons: rgb(252 251 249 / .94);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -163,7 +166,7 @@ main { display: block; }
 .banda picture, .banda img { width: 100%; height: 100%; object-fit: cover; }
 .banda__text { padding: 64px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
 .banda .etiqueta { color: var(--or); }
-.banda__peu { font-size: 13px; color: var(--gris); }
+.banda__peu { font-size: 13px; color: var(--sobre-fosc-2); }
 .portes { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 20px; }
 .porta { display: flex; flex-direction: column; gap: 10px; padding: 28px; border: 1.5px solid var(--tinta); border-radius: var(--r); background: var(--paper); text-decoration: none; transition: transform .15s ease-out, box-shadow .15s ease-out; }
 .porta:hover { transform: translate(-3px, -3px); box-shadow: var(--ombra); }
@@ -171,7 +174,7 @@ main { display: block; }
 .porta__t { font: 400 30px/1.1 var(--display); }
 .porta__d { color: var(--gris); }
 .porta--destac { background: var(--boto); color: var(--clar); border-color: var(--boto); }
-.porta--destac .porta__num, .porta--destac .porta__d { color: var(--rosa-clar); }
+.porta--destac .porta__num, .porta--destac .porta__d { color: var(--estuc); }
 .franja { background: var(--boto); color: var(--clar); }
 .franja__dins { max-width: var(--amplada); margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: center; }
 .franja__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -253,12 +256,12 @@ figcaption { font-size: 13px; color: var(--gris); margin-top: 8px; }
 .fila { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
 .camp { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; border: 0; padding: 0; min-width: 0; }
 .camp label, .camp legend { font-weight: 600; font-size: 15px; }
-.camp input, .camp select, .camp textarea { width: 100%; font-size: 16px; padding: 11px 12px; border: 1.5px solid var(--camp); border-radius: var(--r); background: var(--fosc); }
+.camp input, .camp select, .camp textarea { width: 100%; font-size: 16px; padding: 11px 12px; border: 1.5px solid var(--camp); border-radius: var(--r); background: var(--paper); }
 .camp textarea { min-height: 110px; resize: vertical; }
 .camp input:focus-visible, .camp select:focus-visible, .camp textarea:focus-visible { outline: 3px solid var(--granat); outline-offset: 1px; }
 .formulari--revisat :invalid { border-color: var(--granat); }
 .opcions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-.opcions label { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1.5px solid var(--camp); border-radius: var(--r); background: var(--fosc); font-weight: 500; cursor: pointer; }
+.opcions label { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1.5px solid var(--camp); border-radius: var(--r); background: var(--paper); font-weight: 500; cursor: pointer; }
 .opcions input { accent-color: var(--granat); width: 18px; height: 18px; }
 .chk { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; margin: 6px 0 20px; }
 .chk input { margin-top: 4px; width: 18px; height: 18px; flex: none; accent-color: var(--granat); }
@@ -306,10 +309,10 @@ figcaption { font-size: 13px; color: var(--gris); margin-top: 8px; }
 .carnet-bloc { display: grid; grid-template-columns: auto 1fr; gap: 64px; align-items: center; }
 .carnet-bloc > div:last-child > * + * { margin-top: 16px; }
 .carnet { position: relative; width: 340px; aspect-ratio: 1.586; border-radius: 16px; background: var(--boto); color: var(--clar); padding: 22px 24px; box-shadow: 0 24px 40px -18px rgb(var(--vel) / .55); overflow: hidden; transform: rotate(-3deg); }
-.carnet__cap { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; color: var(--rosa-clar); }
+.carnet__cap { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; color: var(--estuc); }
 .carnet__marca { font: 400 26px/1 var(--display); letter-spacing: 0; text-transform: none; color: var(--clar); }
 .carnet__nom { font: 400 22px/1.2 var(--serif); margin-top: 44px; }
-.carnet__num { font-size: 13px; color: var(--rosa-clar); margin-top: 4px; }
+.carnet__num { font-size: 13px; color: var(--estuc); margin-top: 4px; }
 .carnet__qr { position: absolute; right: 22px; bottom: 26px; width: 66px; height: 66px; border-radius: 6px; background:
   repeating-linear-gradient(90deg, var(--paper) 0 6px, transparent 6px 12px),
   repeating-linear-gradient(0deg, var(--paper) 0 6px, var(--granat) 6px 12px); opacity: .9; }
@@ -333,14 +336,14 @@ figcaption { font-size: 13px; color: var(--gris); margin-top: 8px; }
 .article li + li { margin-top: 8px; }
 
 /* Peu */
-.peu { background: var(--fosc); color: var(--tinta); margin-top: 0; }
+.peu { background: var(--fosc); color: var(--sobre-fosc); margin-top: 0; }
 .peu a { color: var(--clar); }
 .peu__dins { max-width: var(--amplada); margin: 0 auto; padding: 64px 24px 40px; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
 .peu__dins > div > * + * { margin-top: 14px; }
 .peu__nom { font: 400 40px/1 var(--display); color: var(--clar); }
 .peu h2 { font: 600 12px/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--or); }
 .peu ul li + li { margin-top: 6px; }
-.peu__legal { max-width: var(--amplada); margin: 0 auto; padding: 20px 24px 36px; border-top: 1px solid var(--linia); font-size: 13px; color: var(--gris); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.peu__legal { max-width: var(--amplada); margin: 0 auto; padding: 20px 24px 36px; border-top: 1px solid rgb(var(--llum) / .14); font-size: 13px; color: var(--sobre-fosc-2); display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .nx-credit { margin-left: auto; }
 
 /* Responsive */
@@ -406,8 +409,8 @@ html { scroll-behavior: auto; }
 .heroi__text > * + * { margin-top: 22px; }
 .heroi .etiqueta { color: var(--clar); }
 .heroi h1 { color: var(--clar); text-shadow: 0 2px 24px rgb(var(--negre) / .35); }
-.heroi h1 .h1__any { display: block; color: var(--rosa-clar); }
-.heroi .entradeta { max-width: 44ch; color: var(--tinta); }
+.heroi h1 .h1__any { display: block; color: var(--estuc); }
+.heroi .entradeta { max-width: 44ch; color: var(--clar); }
 .heroi .botons { justify-content: center; margin-top: 36px; }
 .boto--vidre { background: rgb(var(--llum) / .12); color: var(--clar); border-color: rgb(var(--llum) / .85); }
 .boto--vidre:hover { background: var(--clar); color: var(--fosc); border-color: var(--clar); }
@@ -465,7 +468,7 @@ html { scroll-behavior: auto; }
 .casa__text { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 20px; background: linear-gradient(transparent, rgb(var(--vel) / .85)); color: var(--clar); opacity: 0; transform: translateY(12px); transition: opacity .45s .15s, transform .45s .15s; white-space: nowrap; }
 .casa__item.is-obert .casa__text, .casa__item:hover .casa__text, .casa__item:focus-visible .casa__text { opacity: 1; transform: none; }
 .casa__t { font: 400 28px/1.1 var(--display); }
-.casa__d { font-size: 14px; color: var(--tinta); margin-top: 4px; }
+.casa__d { font-size: 14px; color: var(--clar); margin-top: 4px; }
 @media (max-width: 760px) {
   .casa { height: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
   .casa__item, .casa__item.is-obert { flex: 0 0 78vw; height: 420px; scroll-snap-align: center; }
@@ -529,7 +532,7 @@ html { scroll-behavior: auto; }
 .marca__sub, .act__data span, .act__cat { letter-spacing: 0; text-transform: none; font-size: 13px; }
 .marca__sub { font-size: 12px; }
 .peu h2 { font: 600 15px/1.3 var(--sans); letter-spacing: 0; text-transform: none; color: var(--or); }
-.heroi .etiqueta { color: var(--rosa-clar); }
+.heroi .etiqueta { color: var(--estuc); }
 
 /* Escala: títols més grans i amb més aire */
 h1 { font-size: clamp(46px, 7vw, 104px); }
@@ -546,7 +549,7 @@ h2 { font-size: clamp(36px, 5vw, 68px); line-height: 1.02; overflow-wrap: break-
 /* Xifres: tipografia gegant, sense caixa */
 .xifres { max-width: var(--amplada); margin: 0 auto; background: transparent; border: 0; border-top: 1px solid var(--linia); border-bottom: 1px solid var(--linia); }
 .xifres div { padding: 40px 24px 36px; }
-.xifres b { font-size: clamp(56px, 7vw, 104px); color: var(--rosa-clar); margin-bottom: 10px; }
+.xifres b { font-size: clamp(56px, 7vw, 104px); color: var(--terracota); margin-bottom: 10px; }
 
 /* Portes: llista gran sense targetes */
 .portes { grid-template-columns: minmax(0, 1fr); gap: 0; }
@@ -556,7 +559,7 @@ h2 { font-size: clamp(36px, 5vw, 68px); line-height: 1.02; overflow-wrap: break-
 .porta:hover .porta__t, .porta:focus-visible .porta__t { color: var(--granat); }
 .porta--destac { background: transparent; border-color: var(--linia); color: var(--tinta); }
 .porta--destac .porta__num { color: var(--granat); }
-.porta--destac .porta__t { color: var(--rosa-clar); }
+.porta--destac .porta__t { color: var(--terracota); }
 .porta--destac .porta__d { color: var(--gris); }
 @media (max-width: 760px) { .porta { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
 
@@ -572,10 +575,10 @@ a:focus-visible, button:focus-visible, .porta:focus-visible { outline: 3px solid
 /* Camps sobre fosc */
 .camp input::placeholder, .camp textarea::placeholder { color: var(--camp); }
 
-select option { background: var(--fosc); color: var(--tinta); }
+select option { background: var(--paper); color: var(--tinta); }
 
 /* Mapa: que no cremi en fosc */
-.mapa iframe { filter: grayscale(.6) brightness(.85) contrast(1.05); }
+.mapa iframe { filter: grayscale(.4) sepia(.1); }
 
 @media (prefers-reduced-motion: reduce) { .porta, .boto { transition: none; } .boto:active, .porta:active { transform: none; } }
 
@@ -596,3 +599,21 @@ select option { background: var(--fosc); color: var(--tinta); }
 .marca:hover .marca__medalla img { transform: rotate(-8deg); }
 @media (max-width: 640px) { .marca__medalla, .marca__medalla img { width: 40px; height: 40px; } }
 @media (prefers-reduced-motion: reduce) { .marca__medalla img { transition: none; } }
+
+/* ============ v9 · Calç i colors: alegria, vida activa ============ */
+/* Hero més lluminós: fosc només darrere del text, la façana respira a les vores */
+.heroi__vel { background: radial-gradient(ellipse 48% 54% at 50% 50%, rgb(var(--vel) / .56) 0%, rgb(var(--vel) / .30) 62%, rgb(var(--vel) / .08) 100%), linear-gradient(180deg, rgb(var(--vel) / .12), rgb(var(--vel) / 0) 30%, rgb(var(--vel) / 0) 62%, rgb(var(--vel) / .42)) !important; }
+.heroi h1, .heroi .entradeta { text-shadow: 0 2px 18px rgb(var(--negre) / .5); }
+.heroi__peu { color: var(--clar); text-shadow: 0 1px 8px rgb(var(--negre) / .6); }
+/* Xifres en una banda d'estuc, cada una amb un color de la bandera */
+.xifres { max-width: none; background: var(--rosa); border: 0; padding: 0 max(24px, calc((100% - var(--amplada)) / 2)); }
+.xifres div { border-left-color: rgb(var(--vel) / .1); }
+.xifres div:nth-child(2) b { color: var(--granat); }
+.xifres div:nth-child(3) b { color: var(--verd); }
+.xifres div:nth-child(4) b { color: var(--blau); }
+.porta:nth-of-type(1) .porta__num { color: var(--terracota); }
+.porta:nth-of-type(2) .porta__num { color: var(--verd); }
+.porta:nth-of-type(3) .porta__num { color: var(--blau); }
+.banda .boto--clar { background: var(--clar); color: var(--tinta); border-color: var(--clar); }
+.banda .boto--clar:hover { background: var(--estuc); border-color: var(--estuc); }
+.peu .boto--clar { background: var(--clar); border-color: var(--clar); }
